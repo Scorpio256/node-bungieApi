@@ -50,9 +50,7 @@ class BungieNetAPI {
             });
     }
 
-
     /* GROUP v2 */
-
     /**
      * GroupV2.GroupSearch
      * Search for Groups.
@@ -115,6 +113,30 @@ class BungieNetAPI {
     groupV2_GetMembersOfGroup(groupId) {
         this.options.method = 'GET';
         this.options.uri = this.host + '/Platform/GroupV2/' + groupId + '/Members/';
+        return rp(this.options)
+            .then(body => body)
+            .catch(function (err) {
+                console.log(err);
+            });
+    }
+
+
+    /* Destiny 2 */
+
+    /**
+     * Destiny2.GetProfile
+     * Returns Destiny Profile information for the supplied membership.
+     * @param {number} membershipType type of membership enum (-1: all, 0: none, 1: Xbox, 2: PS4, 3:Blizzard)
+     * @param {string} destinyMembershipId account id (platform specific)
+     * @param {number[]} destinyComponentType enum to pass as query string, can contain multiple params
+     * See #schema_Destiny-DestinyComponentType for value definitions
+     */
+    destiny2_GetProfile(membershipType, destinyMembershipId, destinyComponentType) {
+        this.options.method = 'GET';
+        this.options.uri = this.host + '/Platform/Destiny2/' + membershipType + '/Profile/' + destinyMembershipId + '/';
+        this.options.qs = {
+            components: destinyComponentType
+        }
         return rp(this.options)
             .then(body => body)
             .catch(function (err) {
