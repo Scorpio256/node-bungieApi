@@ -1,0 +1,27 @@
+{
+  "name": "node-bungieApi",
+  "version": "0.0.1",
+  "description": "API Wrapper for Bungie.net in Node.js",
+  "main": "index.js",
+  "keywords": [
+    "Destiny",
+    "2",
+    "Destiny2",
+    "API",
+    "Wrapper",
+    "Async",
+    "Node.js",
+    "Bungie.net"
+  ],
+  "author": {
+    "name": "Milan Urbanec",
+    "email": "milan@urbanec.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scorpio256/node-bungieApi.git"
+  },
+  "homepage": "https://github.com/scorpio256/node-bungieApi",
+  "license": "MIT",
+  "dependencies": {}
+}
