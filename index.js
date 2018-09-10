@@ -34,7 +34,7 @@ class BungieNetAPI {
      * @param {string} code
      */
     app_oAuthToken(code) {
-        this.options = {
+        var options = {
             method: 'POST',
             uri: this.host + '/Platform/App/OAuth/Token/',
             form: {
@@ -43,8 +43,26 @@ class BungieNetAPI {
                 code: code
             }
         };
-        return rp(this.options)
+        return rp(options)
             .then(body => JSON.parse(body))
+            .catch(function (err) {
+                console.log(err);
+            });
+    }
+
+    /* User */
+    /**
+     * User.GetMembershipDataForCurrentUser
+     * Returns a list of accounts associated with signed in user.
+     * This is useful for OAuth implementations that do not give you access to the token response.
+     * @param {string} accessToken Generated access token provided by OAuth
+     */
+    user_GetMembershipsForCurrentUser(accessToken) {
+        this.options.uri = this.host + '/Platform/User/GetMembershipsForCurrentUser/';
+        this.options.method = 'GET';
+        this.options.headers.Authorization = 'Bearer ' + accessToken;
+        return rp(this.options)
+            .then(body => body)
             .catch(function (err) {
                 console.log(err);
             });
@@ -135,7 +153,7 @@ class BungieNetAPI {
         this.options.method = 'GET';
         this.options.uri = this.host + '/Platform/Destiny2/' + membershipType + '/Profile/' + destinyMembershipId + '/';
         this.options.qs = {
-            components: destinyComponentType
+            components: destinyComponentType.join(',')
         }
         return rp(this.options)
             .then(body => body)
