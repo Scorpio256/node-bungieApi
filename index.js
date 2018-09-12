@@ -162,6 +162,20 @@ class BungieNetAPI {
             });
     }
 
+    /**
+     * Destiny2.GetPublicMilestones
+     * Gets public information about currently available Milestones.
+     */
+    destiny2_GetPublicMilestones(){
+        this.options.method = 'GET';
+        this.options.uri = this.host + '/Platform/Destiny2/Milestones/';
+        return rp(this.options)
+            .then(body => body)
+            .catch(function (err) {
+                console.log(err);
+            });
+    }
+
 }
 
 
