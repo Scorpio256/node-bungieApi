@@ -5,6 +5,8 @@ For more information check official api guide.
 
 https://bungie-net.github.io/multi/index.html
 
+**CAUTION THIS IS STILL IN DEVELOPMENT AND NOT ALL ENDPOINTS ARE READY**
+
 ## Install
 ```
 npm install node-bungieapi 
