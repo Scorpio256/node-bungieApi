@@ -1,5 +1,5 @@
 {
-  "name": "node-bungieApi",
+  "name": "node-bungieapi",
   "version": "0.0.1",
   "description": "API Wrapper for Bungie.net in Node.js",
   "main": "index.js",
@@ -14,7 +14,7 @@
     "Bungie.net"
   ],
   "author": {
-    "name": "Milan Urbanec",
+    "name": "scorpio256",
     "email": "milan@urbanec.org"
   },
   "repository": {
