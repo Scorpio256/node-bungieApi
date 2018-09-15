@@ -1,6 +1,6 @@
 {
   "name": "node-bungieapi",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "API Wrapper for Bungie.net in Node.js",
   "main": "index.js",
   "keywords": [

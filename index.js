@@ -138,6 +138,22 @@ class BungieNetAPI {
             });
     }
 
+    /**
+     * GroupV2.GetGroupByName
+     * Get information about a specific group with the given name and type.
+     * @param {string} groupName Full group name
+     * @param {int} groupType Group type 0 for groups 1 for clans
+     */
+    groupV2_GetGroupByName(groupName, groupType) {
+        this.options.method = 'GET';
+        this.options.uri = this.host + '/Platform/GroupV2/Name/' + encodeURI(groupName) + '/' + groupType + '/';
+        return rp(this.options)
+            .then(body => body)
+            .catch(function (err) {
+                console.log(err);
+            });
+    }
+
 
     /* Destiny 2 */
 
@@ -166,7 +182,7 @@ class BungieNetAPI {
      * Destiny2.GetPublicMilestones
      * Gets public information about currently available Milestones.
      */
-    destiny2_GetPublicMilestones(){
+    destiny2_GetPublicMilestones() {
         this.options.method = 'GET';
         this.options.uri = this.host + '/Platform/Destiny2/Milestones/';
         return rp(this.options)

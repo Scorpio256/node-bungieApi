@@ -51,6 +51,10 @@ groupV2_GetGroup(groupId)
 ```
 groupV2_GetMembersOfGroup(groupId)
 ```
+- GetGroupByName
+```
+groupV2_GetGroupByName(groupName, groupType)
+```
 ####Destiny2
 - GetProfile
 ```
