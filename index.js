@@ -154,6 +154,25 @@ class BungieNetAPI {
             });
     }
 
+    /**
+     * GroupV2.GetGroupsForMember
+     * Get information about the groups that a given member has joined.
+     *
+     * @param {int} membershipType Membership type of the supplied membership ID.
+     * @param {int} membershipId Membership ID to for which to find founded groups.
+     * @param {int} groupType Type of group the supplied member founded.
+     * @param {int} filter Filter apply to list of joined groups.
+     */
+    groupV2_GetGroupsForMember(membershipType, membershipId, filter, groupType) {
+        this.options.method = 'GET';
+        this.options.uri = this.host + '/Platform/GroupV2/User/' + membershipType + '/' + membershipId + '/' + filter + '/' + groupType + '/';
+        return rp(this.options)
+            .then(body => body)
+            .catch(function (err) {
+                console.log(err);
+            });
+    }
+
 
     /* Destiny 2 */
 
@@ -179,12 +198,62 @@ class BungieNetAPI {
     }
 
     /**
+     * Destiny2.GetDestinyManifest
+     * Gets public information about currently available Milestones.
+     */
+    destiny2_GetDestinyManifest() {
+        this.options.method = 'GET';
+        this.options.uri = this.host + '/Platform/Destiny2/Manifest/';
+        return rp(this.options)
+            .then(body => body)
+            .catch(function (err) {
+                console.log(err);
+            });
+    }
+
+    /**
      * Destiny2.GetPublicMilestones
      * Gets public information about currently available Milestones.
      */
     destiny2_GetPublicMilestones() {
         this.options.method = 'GET';
         this.options.uri = this.host + '/Platform/Destiny2/Milestones/';
+        return rp(this.options)
+            .then(body => body)
+            .catch(function (err) {
+                console.log(err);
+            });
+    }
+
+    /**
+     * Destiny2.SearchDestinyPlayer
+     * Returns a list of Destiny memberships given a full Gamertag or PSN ID.
+     */
+    destiny2_SearchDestinyPlayer(membershipType, displayName) {
+        this.options.method = 'GET';
+        this.options.uri = this.host + '/Platform/Destiny2/SearchDestinyPlayer/' + membershipType + '/' + displayName + '/';
+        return rp(this.options)
+            .then(body => body)
+            .catch(function (err) {
+                console.log(err);
+            });
+    }
+
+    /**
+     * Destiny2.GetCharacter
+     * Returns character information for the supplied character.
+     * @param {number} membershipType type of membership enum (-1: all, 0: none, 1: Xbox, 2: PS4, 3:Blizzard)
+     * @param {int} destinyMembershipId account id (platform specific)
+     * @param {int} characterId ID of the character
+     * @param {number[]} destinyComponentType enum to pass as query string, can contain multiple params
+     * See #schema_Destiny-DestinyComponentType for value definitions
+     */
+    destiny2_GetCharacter(membershipType, destinyMembershipId, characterId, destinyComponentType) {
+        this.options.method = 'GET';
+        this.options.uri = this.host + '/Platform/Destiny2/' + membershipType + '/Profile/' + destinyMembershipId + '/Character/' + characterId + '/';
+        this.options.qs = {
+            components: destinyComponentType.join(',')
+        }
         return rp(this.options)
             .then(body => body)
             .catch(function (err) {
