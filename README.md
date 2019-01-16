@@ -64,3 +64,15 @@ destiny2_GetProfile(membershipType, destinyMembershipId, destinyComponentType)
 ```
 destiny2_GetPublicMilestones()
 ```
+- GetDestinyManifest
+```
+destiny2_GetDestinyManifest()
+```
+- SearchDestinyPlayer
+```
+destiny2_SearchDestinyPlayer(membershipType, displayName)
+```
+- GetCharacter
+```
+destiny2_GetCharacter(membershipType, destinyMembershipId, characterId, destinyComponentType)
+```
